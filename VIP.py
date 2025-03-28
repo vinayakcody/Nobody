@@ -1,10 +1,11 @@
+
 import asyncio
 import datetime
 from telegram import Update
 from telegram.ext import Application, CommandHandler, CallbackContext
 
-TELEGRAM_BOT_TOKEN = '7580203890:AAFiOEC7jHmf9jfqy7vzf5jRh65S2V67pj0'
-ADMIN_USER_ID = 7383077317
+TELEGRAM_BOT_TOKEN = '7275048595:AAEUmiY1AYw7bWyy2EvaETdpfTMdinhhpNg'
+ADMIN_USER_ID = {7383077317, 1202212810, 1066744659, 5158837938, 6240348610, 8159441634, 482756202}  # Add more admin IDs here
 USERS_FILE = 'users.txt'
 LOG_FILE = 'log.txt'
 VIP_in_progress = False
@@ -134,7 +135,7 @@ async def run_VIP(chat_id, ip, port, duration, context):
     VIP_in_progress = True
 
     try:
-        command = f"./SOULCRACK {ip} {port} {duration} "
+        command = f"./bgmi {ip} {port} {duration} 1300"
         process = await asyncio.create_subprocess_shell(
             command,
             stdout=asyncio.subprocess.PIPE,
@@ -189,4 +190,3 @@ async def VIP(update: Update, context: CallbackContext):
     ), parse_mode='Markdown')
 
     asyncio.create_task(run_VIP(chat_id, ip, port, duration, context))
-
